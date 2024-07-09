@@ -1,9 +1,13 @@
 import React from 'react'
+import MyComment from './MyComment'
 
-const replyComment = () => {
+const ReplyComment = () => {
+    
   return (
-    <div></div>
+    <div>
+        <MyComment />
+    </div>
   )
 }
 
-export default replyComment
+export default ReplyComment
