@@ -23,9 +23,13 @@ function App() {
     },
   ]);
 
+  function handleAddComment(newComment) {
+    setCommentList([...commentList, newComment])
+  }
+
   return (
     <>
-      <div className="flex flex-col justify-center items-center h-screen m-auto">
+      <div className="flex flex-col justify-center items-center h-full m-auto">
         {/* <Comment
           userName={"oussama"}
           comment={
@@ -36,7 +40,7 @@ function App() {
         {commentList.map((comment: any) => (
           <Comment userName={comment.userName} comment={comment.comment} />
         ))}
-        <MyComment />
+        <MyComment addComment={handleAddComment} />
       </div>
     </>
   );
