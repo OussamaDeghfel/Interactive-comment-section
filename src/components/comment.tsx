@@ -7,8 +7,8 @@ const Comment = ({ userName, comment }) => {
   const [vote, setVote] = useState(0);
   const [showReply, setShowReply] = useState(false);
   return (
-    <div className="p-5 flex shadow-md border-gray-500 rounded-md w-fit m-5">
-      
+    <div className="p-5 flex flex-col shadow-md border-gray-500 rounded-md w-fit m-5">
+      <div className="flex">
         <div className="bg-gray-400 rounded-md flex flex-col w-[30px] h-full p-2 justify-around">
           <FaPlus
             onClick={() => setVote(vote + 1)}
@@ -41,7 +41,8 @@ const Comment = ({ userName, comment }) => {
           <FaReply size={15} />
           <span className="font-bold">Reply</span>
         </button>
-      {showReply && <ReplyComment />}
+        </div>
+      {showReply && <div className="mt-4"> <ReplyComment /> </div>}
     </div>
   );
 };
