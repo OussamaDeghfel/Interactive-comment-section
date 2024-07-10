@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import leva from "../assets/leva-pic.png";
 
 const MyComment = ({addComment}) => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState([]);
+  const [inputComment, setInputComment] = useState('')
+  
+ 
+  function handleChange(e) {
+    setInputComment(e.target.value)
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
-    addComment(message);
-    setMessage("");
+    addComment(inputComment)
+    setInputComment('')
   }
 
-  const handleChange = (e) => {
-    setMessage(e.target.value);
-  };
 
   return (
     <form onSubmit={handleSubmit}>
