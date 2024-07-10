@@ -3,7 +3,8 @@ import Comment from "./components/Comment";
 import AddComment from "./components/AddComment";
 
 interface commentType {
-  id: number;
+  id: number
+  date: number
   userName: string
   comment: string
 }
@@ -13,6 +14,7 @@ function App() {
     {
       id: 1,
       userName: "oussama",
+      date: 1,
       comment:
         "Lorem ipsum dolor sit amet ng elit. Nulla, minus. Minus praesentium ea eius placeat omnis rem sit blanditiis sed!",
     } as commentType
@@ -35,7 +37,7 @@ function App() {
         /> */}
 
         {commentList.map((comment: commentType) => (
-          <Comment userName={comment.userName} comment={comment.comment} />
+          <Comment id={comment.id} userName={comment.userName} comment={comment.comment} date={comment.date} />
         ))}
         <AddComment addComment={handleAddComment} />
       </div>

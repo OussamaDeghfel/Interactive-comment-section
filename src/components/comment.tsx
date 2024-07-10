@@ -3,7 +3,7 @@ import { FaMinus, FaPlus, FaReply } from "react-icons/fa";
 import mbappe from "../assets/mbappe-pic.png";
 import ReplyComment from "./ReplyComment";
 
-const Comment = ({ userName, comment }) => {
+const Comment = ({id, userName, comment, date }) => {
   const [vote, setVote] = useState(0);
   const [showReply, setShowReply] = useState(false);
   return (
@@ -26,11 +26,12 @@ const Comment = ({ userName, comment }) => {
           <div className="flex">
             <img
               src={mbappe}
+              key={id}
               alt="user-image"
               className="w-[30px] h-[30px] rounded-full"
             />
             <h1 className="font-bold pl-2">{userName}</h1>
-            <h2 className="pl-2">1 month ago</h2>
+            <h2 className="pl-2">{date}</h2>
           </div>
           <p className="w-[550px] pt-2 text-gray-600">{comment}</p>
         </div>

@@ -13,8 +13,11 @@ const AddComment = ({addComment}) => {
   function handleSubmit(e) {
     e.preventDefault();
 
+    const date = new Date();
+
     const newCommentObject = {
-      id: Date.now(),
+      id: Math.random().toString(32).substring(2, 15),
+      date: date.toLocaleString(),
       userName:"Leva",
       comment: inputComment,
     }
