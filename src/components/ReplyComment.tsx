@@ -1,5 +1,3 @@
-import React from "react";
-import MyComment from "./MyComment";
 import leva from "../assets/leva-pic.png";
 
 const ReplyComment = () => {
