@@ -2,6 +2,12 @@ import { useState } from "react";
 import Comment from "./components/Comment";
 import AddComment from "./components/AddComment";
 
+interface commentType {
+  id: number;
+  userName: string
+  comment: string
+}
+
 function App() {
   const [commentList, setCommentList] = useState([
     {
@@ -9,22 +15,13 @@ function App() {
       userName: "oussama",
       comment:
         "Lorem ipsum dolor sit amet ng elit. Nulla, minus. Minus praesentium ea eius placeat omnis rem sit blanditiis sed!",
-    },
-    {
-      id: 2,
-      userName: "Mbappe",
-      comment:
-        "Lorem ipsum dolor siminus. Minus praesentium ea eius placeat omnis rem sit blanditiis sed!",
-    },
-    {
-      id: 3,
-      userName: "Halland",
-      comment: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-    },
+    } as commentType
   ]);
 
-  function handleAddComment(newComment) {
-    setCommentList([...commentList, newComment])
+  function handleAddComment(newComment: commentType) {
+  
+    setCommentList([...commentList, newComment]);
+
   }
 
   return (
@@ -37,7 +34,7 @@ function App() {
           }
         /> */}
 
-        {commentList.map((comment: any) => (
+        {commentList.map((comment: commentType) => (
           <Comment userName={comment.userName} comment={comment.comment} />
         ))}
         <AddComment addComment={handleAddComment} />
