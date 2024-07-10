@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import leva from "../assets/leva-pic.png";
 
-const MyComment = ({addComment}) => {
+const AddComment = ({addComment}) => {
   const [message, setMessage] = useState([]);
   const [inputComment, setInputComment] = useState('')
   
@@ -34,4 +34,4 @@ const MyComment = ({addComment}) => {
   );
 };
 
-export default MyComment;
+export default AddComment;

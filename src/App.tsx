@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Comment from "./components/Comment";
-import MyComment from "./components/MyComment";
+import AddComment from "./components/AddComment";
 
 function App() {
   const [commentList, setCommentList] = useState([
@@ -40,7 +40,7 @@ function App() {
         {commentList.map((comment: any) => (
           <Comment userName={comment.userName} comment={comment.comment} />
         ))}
-        <MyComment addComment={handleAddComment} />
+        <AddComment addComment={handleAddComment} />
       </div>
     </>
   );
