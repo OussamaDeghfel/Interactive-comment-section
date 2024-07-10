@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import leva from "../assets/leva-pic.png";
 
 const AddComment = ({addComment}) => {
-  const [message, setMessage] = useState([]);
+  // const [message, setMessage] = useState([]);
   const [inputComment, setInputComment] = useState('')
   
  
@@ -12,7 +12,14 @@ const AddComment = ({addComment}) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    addComment(inputComment)
+
+    const newCommentObject = {
+      id: Date.now(),
+      userName:"Leva",
+      comment: inputComment,
+    }
+
+    addComment(newCommentObject)
     setInputComment('')
   }
 
@@ -23,6 +30,7 @@ const AddComment = ({addComment}) => {
         <img src={leva} alt="" className="w-[40px] h-[40px] rounded-full" />
         <textarea
           onChange={handleChange}
+          value={inputComment}
           placeholder="Add a comment..."
           className="w-[550px] h-[100px] flex items-start border-2 border-gray-200 rounded-md p-2"
         />
