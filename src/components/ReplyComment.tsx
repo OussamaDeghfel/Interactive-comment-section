@@ -1,12 +1,27 @@
+import { useState } from "react";
 import leva from "../assets/leva-pic.png";
 
-const ReplyComment = () => {
+const ReplyComment = (addReplyComment) => {
+    const [replyInput, setReplyInput] = useState('')
+
+    function handleChange(e) {
+        setReplyInput(e.target.value)
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        addReplyComment(replyInput)
+        setReplyInput('')
+    }
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="flex space-x-5 items-start">
           <img src={leva} alt="" className="w-[40px] h-[40px] rounded-full" />
           <textarea
+            onChange={handleChange}
+            value={replyInput}
             placeholder="Add a comment..."
             className="w-[550px] h-[100px] flex items-start border-2 border-gray-200 rounded-md p-2"
           />
