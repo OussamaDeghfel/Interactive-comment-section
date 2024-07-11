@@ -1,18 +1,6 @@
-import { useState } from "react";
-import leva from "../assets/leva-pic.png";
 
-const ReplyComment = (addReplyComment) => {
-    const [replyInput, setReplyInput] = useState('')
 
-    function handleChange(e) {
-        setReplyInput(e.target.value)
-    }
-
-    function handleSubmit(e) {
-        e.preventDefault()
-        addReplyComment(replyInput)
-        setReplyInput('')
-    }
+const ReplyComment = () => {
 
   return (
     <div>
@@ -30,6 +18,8 @@ const ReplyComment = (addReplyComment) => {
           </button>
         </div>
       </form>
+
+      
     </div>
   );
 };
