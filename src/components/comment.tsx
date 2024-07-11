@@ -3,9 +3,12 @@ import { FaMinus, FaPlus, FaReply } from "react-icons/fa";
 import mbappe from "../assets/mbappe-pic.png";
 import ReplyComment from "./ReplyComment";
 
-const Comment = ({id, userName, comment, date }) => {
+
+const Comment = ({id, userName, comment, date, replies }: commentType) => {
   const [vote, setVote] = useState(0);
   const [showReply, setShowReply] = useState(false);
+
+
   return (
     <div className="p-5 flex flex-col shadow-md border-gray-500 rounded-md w-fit m-5">
       <div className="flex">
