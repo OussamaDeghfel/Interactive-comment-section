@@ -7,6 +7,7 @@ interface commentType {
   date: number
   userName: string
   comment: string
+  replies?: [commentType]
 }
 
 function App() {
