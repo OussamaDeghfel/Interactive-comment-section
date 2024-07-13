@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Comment from "./components/Comment";
 import AddComment from "./components/AddComment";
 
@@ -22,9 +22,21 @@ function App() {
     } as commentType,
   ]);
 
-  function handleAddComment(newComment: commentType) {
-    setCommentList([...commentList, newComment]);
-  }
+  
+
+  useEffect(() => {
+
+    function handleAddComment(newComment: commentType) {
+      setCommentList([...commentList, newComment]);
+      localStorage.setItem("commentList", JSON.stringify(commentList))
+    }
+
+  }, [newComment])
+
+  useEffect(() => {
+    const commentList = JSON.parse(localStorage.getItem("commentList") || "[]")
+    setCommentList(commentList)
+  },[])
 
 
   return (
@@ -40,7 +52,7 @@ function App() {
           />
         ))}
 
-        <AddComment addComment={handleAddComment} />
+        {/* <AddComment addComment={handleAddComment} /> */}
       </div>
     </>
   );
