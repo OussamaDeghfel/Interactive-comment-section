@@ -22,16 +22,13 @@ function App() {
     } as commentType,
   ]);
 
-  
+  function handleAddComment(newComment: commentType) {
+    setCommentList([...commentList, newComment]);
+  }
 
   useEffect(() => {
-
-    function handleAddComment(newComment: commentType) {
-      setCommentList([...commentList, newComment]);
-      localStorage.setItem("commentList", JSON.stringify(commentList))
-    }
-
-  }, [newComment])
+    localStorage.setItem("commentList", JSON.stringify(commentList))
+  }, [commentList])
 
   useEffect(() => {
     const commentList = JSON.parse(localStorage.getItem("commentList") || "[]")
@@ -52,7 +49,7 @@ function App() {
           />
         ))}
 
-        {/* <AddComment addComment={handleAddComment} /> */}
+        <AddComment addComment={handleAddComment} />
       </div>
     </>
   );
