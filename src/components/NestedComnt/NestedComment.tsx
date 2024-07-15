@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import Action from "./Action";
+import { BiDownArrow, BiUpArrow } from "react-icons/bi";
 
 const NestedComment = ({ comment }) => {
   const [inputComment, setInputComment] = useState("");
   const [edit, setEdit] = useState(false);
+  const [showInput, setShowInput] = useState(false);
 
   function onAddComment() {}
+
+  function handleNewComment() {
+    setShowInput(true);
+  }
 
   return (
     <div>
@@ -39,7 +45,10 @@ const NestedComment = ({ comment }) => {
                 </>
               ) : (
                 <>
-                  <Action type="Reply" />
+                  <Action
+                    type="Reply"
+                    handleClick={handleNewComment}
+                  />
                   <Action type="Edit" handleClick={() => setEdit(true)} />
                   <Action type="Delete" />
                 </>
@@ -49,6 +58,21 @@ const NestedComment = ({ comment }) => {
         )}
       </div>
       <div className="ml-4 ">
+        {showInput && (
+          <div className="grid">
+            <input
+              type="text"
+              placeholder="add reply ..."
+              autoFocus
+              onChange={(e) => setInputComment(e.target.value)}
+              className="p-2"
+            />
+            <div className="flex">
+              <Action type="Reply" />
+              <Action type="Cancel" handleClick={() => setShowInput(false)} />
+            </div>
+          </div>
+        )}
         {comment?.replies?.map((cmnt) => {
           return <NestedComment key={cmnt.id} comment={cmnt} />;
         })}
