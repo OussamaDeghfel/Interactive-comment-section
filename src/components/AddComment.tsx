@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import leva from "../assets/leva-pic.png";
 
 const AddComment = ({addComment}) => {
-  // const [message, setMessage] = useState([]);
   const [inputComment, setInputComment] = useState('')
   
  

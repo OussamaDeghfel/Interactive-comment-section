@@ -3,6 +3,7 @@ import Comment from "./components/Comment";
 import AddComment from "./components/AddComment";
 import ReplyComment from "./components/ReplyComment";
 import NestedComment from "./components/NestedComnt/NestedComment";
+import useComment from "./components/hooks/useComment";
 
 // interface commentType {
 //   id: number;
@@ -14,31 +15,28 @@ import NestedComment from "./components/NestedComnt/NestedComment";
 
 const comments = {
   id: 1,
-  replies: [
-    {
-      id: 124578,
-      content: "kirak Dayer",
-      replies: [
-        {
-          id: 3,
-          content: "kach sport",
-          replies: [],
-        },
-      ],
-    },
-    {
-      id: 125487,
-      content: "thala fi your health",
-      replies: [{
-        id: 125847,
-        content: "thala",
-        replies: [],
-      },],
-    },
-  ],
+  replies: [],
 };
 function App() {
   const [commentList, setCommentList] = useState(comments);
+
+  const { insertComment, editComment, deleteComment } = useComment();
+
+  const handleInsertComment = (folderId, item) => {
+    const result = insertComment(commentList, folderId, item);
+    setCommentList(result);
+  };
+
+  const handleEditComment = (folderId, item) => {
+    const result = editComment(commentList, folderId, item);
+    setCommentList(result);
+  };
+
+  const handleDeleteComment = (folderId) => {
+    const result = deleteComment(commentList, folderId);
+    const temp = { ...result };
+    setCommentList(temp);
+  };
 
   // function handleAddComment(newComment: commentType) {
   //   setCommentList([...commentList, newComment]);
@@ -63,7 +61,12 @@ function App() {
 
         <AddComment addComment={handleAddComment} /> */}
 
-        <NestedComment comment={commentList} />
+        <NestedComment
+          handleInsertComment={handleInsertComment}
+          handleEditComment={handleEditComment}
+          handleDeleteComment={handleDeleteComment}
+          comment={commentList}
+        />
       </div>
     </>
   );

@@ -4,10 +4,9 @@ import mbappe from "../assets/mbappe-pic.png";
 import ReplyComment from "./ReplyComment";
 
 
-const Comment = ({id, userName, comment, date, replies }: commentType) => {
+const Comment = ({commentList}) => {
   const [vote, setVote] = useState(0);
   const [showReply, setShowReply] = useState(false);
-
 
   return (
     <div className="p-5 flex flex-col shadow-md border-gray-500 rounded-md w-fit m-5">
@@ -29,14 +28,15 @@ const Comment = ({id, userName, comment, date, replies }: commentType) => {
           <div className="flex">
             <img
               src={mbappe}
-              key={id}
+              key={commentList.id}
               alt="user-image"
               className="w-[30px] h-[30px] rounded-full"
             />
-            <h1 className="font-bold pl-2">{userName}</h1>
-            <h2 className="pl-2">{date}</h2>
+            <h1 className="font-bold pl-2">{commentList.userName}</h1>
+            {/* <input type="text" value={userName} className="font-bold text-xl pl-2 flex w-fit" /> */}
+            <h2 className="pl-2">{commentList.date}</h2>
           </div>
-          <p className="w-[550px] pt-2 text-gray-600">{comment}</p>
+          <p className="w-[550px] pt-2 text-gray-600">{commentList.comment}</p>
         </div>
         <button
           className="flex text-blue-900 space-x-2 items-center"
@@ -45,8 +45,7 @@ const Comment = ({id, userName, comment, date, replies }: commentType) => {
           <FaReply size={15} />
           <span className="font-bold">Reply</span>
         </button>
-        </div>
-      {showReply && <div className="mt-4"> <ReplyComment /> </div>}
+      </div>
     </div>
   );
 };
